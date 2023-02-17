@@ -59,7 +59,8 @@ SELECT DISTINCT code FROM tbl_order ORDER BY code;
 SELECT * FROM tbl_haiban WHERE finish_date >= '2016-12-01' AND finish_date < '2017-01-01'
 UNION SELECT * FROM  tbl_haiban WHERE total_sum > 100 ORDER BY total_sum DESC; 
 -- 【29】 
-SELECT tbl_item.code FROM tbl_item  LEFT JOIN tbl_order ON tbl_item.code = tbl_order.code ORDER BY tbl_item.code; 
+SELECT tbl_item.code FROM tbl_item LEFT JOIN tbl_order ON tbl_item.code = tbl_order.code WHERE tbl_order.order_date is null ORDER BY tbl_item.code;
+(WHERE句内の絞り込み条件としてのカラムはorder_dateでなくても、order_num, branch, countsのいずれかなら正解です。) 
 -- 【30】 
 SELECT tbl_item.code FROM tbl_item INNER JOIN tbl_order ON tbl_item.code = tbl_order.code ORDER BY tbl_item.code DESC;
 -- 【31】 
