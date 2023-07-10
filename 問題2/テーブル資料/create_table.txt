@@ -1,7 +1,3 @@
-drop table tbl_haishi;
-drop table tbl_torihiki;
-drop table tbl_kouza;
-drop table tbl_jiyu;
 CREATE TABLE tbl_haishi(
 	kouza_no CHAR(7) PRIMARY KEY,
 	kouza_name VARCHAR(40) NOT NULL,

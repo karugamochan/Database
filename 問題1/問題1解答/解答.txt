@@ -26,7 +26,7 @@ SELECT * FROM tbl_order WHERE order_date <= '2017-12-01';
 -- 【12】 
 SELECT * FROM tbl_item WHERE item <>'1';
 -- 【13】 
-SELECT * FROM tbl_order WHERE coupon IS NULL;
+SELECT * FROM tbl_order WHERE coupon = 0;
 -- 【14】 
 SELECT * FROM tbl_order WHERE code LIKE 'N%';
 -- 【15】 
@@ -46,7 +46,7 @@ SELECT * FROM tbl_item WHERE (item = '1'AND price <= 3000) OR (item = '3' AND pr
 -- 【22】 
 SELECT code FROM tbl_order WHERE order_date >='2018-03-01'AND order_date < '2018-04-01' AND counts >= 3; 
 -- 【23】 
-SELECT * FROM tbl_order WHERE counts >= 10 OR coupon IS NOT NULL ;
+SELECT * FROM tbl_order WHERE counts >= 10 OR coupon = 0 ;
 -- 【24】 商品テーブルの主キーは「商品コード」、注文テーブルの主キーは「注文日・注文番号・注文枝番」
 -- 【25】 
 SELECT code,name FROM tbl_item WHERE item ='1' ORDER BY code DESC; 
@@ -60,7 +60,7 @@ SELECT * FROM tbl_haiban WHERE finish_date >= '2016-12-01' AND finish_date < '20
 UNION SELECT * FROM  tbl_haiban WHERE total_sum > 100 ORDER BY total_sum DESC; 
 -- 【29】 
 SELECT tbl_item.code FROM tbl_item LEFT JOIN tbl_order ON tbl_item.code = tbl_order.code WHERE tbl_order.order_date is null ORDER BY tbl_item.code;
-(WHERE句内の絞り込み条件としてのカラムはorder_dateでなくても、order_num, branch, countsのいずれかなら正解です。) 
+-- (WHERE句内の絞り込み条件としてのカラムはorder_dateでなくても、order_num, branch, countsのいずれかなら正解です。) 
 -- 【30】 
 SELECT tbl_item.code FROM tbl_item INNER JOIN tbl_order ON tbl_item.code = tbl_order.code ORDER BY tbl_item.code DESC;
 -- 【31】 
@@ -70,7 +70,7 @@ SELECT code,name,price FROM tbl_item WHERE item = '9' AND price > 10000 ORDER BY
 SELECT code,price,price*0.95 AS キャンペーン価格 FROM tbl_item WHERE item ='9' ORDER BY code;
 -- 【33】 
 UPDATE tbl_order SET coupon = coupon + 300 WHERE order_date >='2018-03-12' AND order_date < '2018-03-15' 
-AND counts >= 2 AND coupon IS NOT NULL; 
+AND counts >= 2 AND coupon <>0; 
 -- 【34】 
 UPDATE tbl_order SET counts = counts-1 WHERE order_number = '201802250126'AND code ='W0156';
 -- 【35】 
