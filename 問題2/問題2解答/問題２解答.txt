@@ -83,14 +83,14 @@ INSERT INTO tbl_kouza(kouza_no ,kouza_name,kouza_type,kouza_amount,update_date) 
 UPDATE tbl_kouza SET kouza_amount=(kouza_amount- 3000) * 1.003 
 WHERE kouza_no IN ('0652281','1026413','2239710');
 -- 【35】 
-SELECT kouza_no,update_date,update_date+180 AS 通帳期限日 FROM tbl_kouza 
+SELECT kouza_no,update_date FROM tbl_kouza 
 WHERE update_date < '2017-01-01';
 -- 【36】 
 SELECT kouza_no,'力)'+ kouza_name AS 名義 FROM tbl_kouza WHERE kouza_type = '3';
 -- 【37】 
 SELECT * FROM tbl_kouza WHERE SUBSTRING(kouza_name,1, 5) LIKE '%カワ%';
 -- 【38】 
-SELECT * FROM tbl_kouza WHERE LENGTH(CAST(kouza_amount AS CHAR)) >= 4 AND SUBSTRING(CAST(kouza_amount AS CHAR), LENGTH(CAST(kouza_amount AS CHAR))-3, 3) ='000'; 
+SELECT * FROM tbl_kouza WHERE LENGTH(CAST(kouza_amount AS CHAR)) >= 4 AND SUBSTRING(CAST(kouza_amount AS CHAR), LENGTH(CAST(kouza_amount AS CHAR))-2, 3) ='000'; 
 -- 【39】 
 INSERT INTO tbl_kouza (kouza_no,kouza_name ,kouza_type ,kouza_amount,update_date)
 VALUES ('0351262', 'イトカワ ダイ ', '2', 635110,CURRENT_DATE);
@@ -100,8 +100,8 @@ INSERT INTO tbl_kouza (kouza_no,kouza_name ,kouza_type ,kouza_amount,update_date
 VALUES ('1739298', 'ホシノ サトミ ','l',704610,CURRENT_DATE); 
 -- 【40】 
 SELECT kouza_no,kouza_name,kouza_type,kouza_amount,
-SUBSTRING(CAST(update_date AS CHAR),1, 4) + '年'+ SUBSTRING(CAST(update_date AS CHAR),6 ,2) 
-+'月'+ SUBSTRING(CAST(update_date AS CHAR),9, 2) + '日'AS update_date 
+concat(concat(SUBSTRING(CAST(update_date AS CHAR),1, 4) ,'年'),concat(SUBSTRING(CAST(update_date AS CHAR),6 ,2) 
+,'月'),concat(SUBSTRING(CAST(update_date AS CHAR),9, 2) , '日'))AS update_date 
 FROM tbl_kouza WHERE update_date >= '2018-01-01';
 -- 【41】 
 SELECT SUM(kouza_amount)AS 合計, MAX(kouza_amount)AS 最大, MIN(kouza_amount)AS 最小 ,AVG(kouza_amount)
