@@ -100,7 +100,7 @@ INSERT INTO tbl_kouza (kouza_no,kouza_name ,kouza_type ,kouza_amount,update_date
 VALUES ('1739298', 'ホシノ サトミ ','l',704610,CURRENT_DATE); 
 -- 【40】 
 SELECT kouza_no,kouza_name,kouza_type,kouza_amount,
-concat(SUBSTRING(CAST(update_date AS CHAR),1, 4) ,'年',SUBSTRING(CAST(update_date AS CHAR),6 ,2) 
+CONCAT(SUBSTRING(CAST(update_date AS CHAR),1, 4) ,'年',SUBSTRING(CAST(update_date AS CHAR),6 ,2) 
 ,'月',SUBSTRING(CAST(update_date AS CHAR),9, 2) , '日')AS update_date 
 FROM tbl_kouza WHERE update_date >= '2018-01-01';
 -- 【41】 
