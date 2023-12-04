@@ -100,8 +100,8 @@ INSERT INTO tbl_kouza (kouza_no,kouza_name ,kouza_type ,kouza_amount,update_date
 VALUES ('1739298', 'ホシノ サトミ ','l',704610,CURRENT_DATE); 
 -- 【40】 
 SELECT kouza_no,kouza_name,kouza_type,kouza_amount,
-concat(concat(SUBSTRING(CAST(update_date AS CHAR),1, 4) ,'年'),concat(SUBSTRING(CAST(update_date AS CHAR),6 ,2) 
-,'月'),concat(SUBSTRING(CAST(update_date AS CHAR),9, 2) , '日'))AS update_date 
+concat(SUBSTRING(CAST(update_date AS CHAR),1, 4) ,'年',SUBSTRING(CAST(update_date AS CHAR),6 ,2) 
+,'月',SUBSTRING(CAST(update_date AS CHAR),9, 2) , '日')AS update_date 
 FROM tbl_kouza WHERE update_date >= '2018-01-01';
 -- 【41】 
 SELECT SUM(kouza_amount)AS 合計, MAX(kouza_amount)AS 最大, MIN(kouza_amount)AS 最小 ,AVG(kouza_amount)
