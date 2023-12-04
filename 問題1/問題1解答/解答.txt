@@ -104,7 +104,7 @@ SELECT code, SUM(counts) AS 数量合計 FROM tbl_order
 GROUP BY code HAVING SUM(counts) < 5; 
 -- 【46】 
 SELECT COUNT(coupon) AS 割引件数, SUM(coupon) AS 割引額合計 
-FROM tbl_order;
+FROM tbl_order WHERE coupon!=0;
 -- 【47】 
 SELECT SUBSTRING(order_number,1,6) AS 年月
 , COUNT(*) AS 注文件数 FROM tbl_order 
@@ -126,7 +126,7 @@ WHERE name LIKE '%あったか%') ORDER BY order_date;
 SELECT code, SUM(counts) AS 数量 FROM tbl_order GROUP BY code HAVING
 SUM(counts) > ALL(SELECT AVG(counts) FROM tbl_order GROUP BY code);
 -- 【53】 
-INSERT INTO tbl_order SELECT order_date,order_number,MAX(branch) + 1,'S1003',1, NULL FROM tbl_order
+INSERT INTO tbl_order SELECT order_date,order_number,MAX(branch) + 1,'S1003',1, 0 FROM tbl_order
 WHERE order_date = '2018-03-21' AND order_number ='201803210080'GROUP BY order_date,order_number; 
 INSERT INTO tbl_order SELECT order_date,order_number,MAX(branch) + 1,'A0052',2, 500 FROM tbl_order
 WHERE order_date = '2018-03-22' AND order_number ='201803220901'GROUP BY order_date,order_number; 
