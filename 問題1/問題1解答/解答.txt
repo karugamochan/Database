@@ -22,7 +22,7 @@ SELECT * FROM tbl_item WHERE price <= 1000;
 -- 【10】 
 SELECT * FROM tbl_order WHERE order_date >= '2018-01-01';
 -- 【11】 
-SELECT * FROM tbl_order WHERE order_date <= '2017-12-01';
+SELECT * FROM tbl_order WHERE order_date < '2017-12-01';
 -- 【12】 
 SELECT * FROM tbl_item WHERE item <>'1';
 -- 【13】 
