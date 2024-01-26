@@ -86,7 +86,7 @@ WHERE kouza_no IN ('0652281','1026413','2239710');
 SELECT kouza_no,update_date FROM tbl_kouza 
 WHERE update_date < '2017-01-01';
 -- 【36】 
-SELECT kouza_no,'力)'+ kouza_name AS 名義 FROM tbl_kouza WHERE kouza_type = '3';
+SELECT kouza_no,CONCAT('力',kouza_name) AS 名義 FROM tbl_kouza WHERE kouza_type = '3';
 -- 【37】 
 SELECT * FROM tbl_kouza WHERE SUBSTRING(kouza_name,1, 5) LIKE '%カワ%';
 -- 【38】 
