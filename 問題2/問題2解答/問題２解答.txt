@@ -55,11 +55,11 @@ SELECT kouza_no,kouza_name,kouza_type,kouza_amount,update_date FROM tbl_kouza OR
 -- 【25】 
 SELECT DISTINCT kouza_name FROM tbl_kouza ORDER BY kouza_name;
 -- 【26】 
-SELECT kouza_no,kouza_name,kouza_type,kouza_amount,update_date FROM tbl_kouza ORDER BY kouza_amount DESC,kouza_no;
+SELECT kouza_no,kouza_name,kouza_type,kouza_amount,update_date FROM tbl_kouza ORDER BY 4 DESC,1;
 -- 【27】 
 SELECT kouza_no FROM tbl_kouza UNION SELECT kouza_no FROM tbl_haishi ORDER BY kouza_no; 
 -- 【28】 
-SELECT tbl_kouza.kouza_name FROM tbl_kouza  LEFT JOIN tbl_haishi ON tbl_kouza.kouza_no = tbl_haishi.kouza_no WHERE tbl_haishi.kouza_no IS NULL ORDER BY tbl_kouza.kouza_name DESC ;
+SELECT distinct tbl_kouza.kouza_name FROM tbl_kouza  LEFT JOIN tbl_haishi ON tbl_kouza.kouza_no = tbl_haishi.kouza_no WHERE tbl_haishi.kouza_no IS NULL ORDER BY tbl_kouza.kouza_name DESC ;
 
 -- 【29】 
 SELECT tbl_kouza.kouza_name FROM tbl_kouza INNER JOIN tbl_haishi ON tbl_kouza.kouza_no = tbl_haishi.kouza_no ORDER BY tbl_kouza.kouza_name; 
