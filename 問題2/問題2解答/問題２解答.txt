@@ -141,6 +141,6 @@ SELECT kouza_no,kouza_name,kouza_amount FROM tbl_kouza WHERE kouza_no IN
 (SELECT kouza_no FROM tbl_torihiki WHERE input_amount>= 1000000);
 -- 【52】 
 SELECT * FROM tbl_kouza WHERE update_date > ALL (SELECT torihiki_date FROM tbl_torihiki);
--- 【53】 
+-- 【53】
 INSERT INTO tbl_haishi SELECT * FROM tbl_kouza WHERE kouza_no ='2761055';
 DELETE FROM tbl_kouza WHERE kouza_no = '2761055';
